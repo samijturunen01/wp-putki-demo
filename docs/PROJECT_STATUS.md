@@ -11,6 +11,7 @@ _Last updated: 2026-11-19_
 ## Repository & deployment
 - Repo: `samijturunen01/wp-putki-demo` (public) – https://github.com/samijturunen01/wp-putki-demo
 - Live demo: https://samijturunen01.github.io/wp-putki-demo/ (GitHub Actions → Pages on every push to `main`)
+- Deployment: first deploy 2026-11-19, CI green (lint, build, 93 Playwright tests); live site verified with `LIVE_URL=https://samijturunen01.github.io npx playwright test` → 93 passed, 3 skipped
 - Local preview port: **4331** (`node scripts/serve-dist.mjs 4331`)
 - Git identity (repo-local): `samijturunen01 <308068629+samijturunen01@users.noreply.github.com>`
 
