@@ -1,0 +1,582 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/unbounded/wght.css';
+@import '@fontsource-variable/figtree/wght.css';
+@import '@fontsource-variable/geist-mono/wght.css';
+
+/*
+ * "Linjassa" – WP-Putki design system.
+ * The logo is one unbroken line drawn like a pipe run. The site borrows the language of
+ * an LVI drawing: night-blue drafting surfaces, the logo's cyan flow line, rounded pipe
+ * bends, valve symbols (⋈) and supply/return colour coding (heat = ember, water = cyan).
+ */
+@theme {
+  --color-ink: #061018;
+  --color-ink-2: #0a1824;
+  --color-ink-3: #10222f;
+  --color-ink-4: #183040;
+  --color-paper: #f1f5f7;
+  --color-paper-2: #e3eaee;
+  --color-chalk: #ffffff;
+  --color-graphite: #0b1a24;
+  --color-steel: #46586a;
+  --color-fog: #a3b4c2;
+  --color-mist: #cfdbe3;
+  --color-flow: #05aef0;
+  --color-flow-lite: #6fd3fb;
+  --color-flow-deep: #006a96;
+  --color-flow-wash: #def3fc;
+  --color-heat: #ff7247;
+  --color-heat-deep: #b8401c;
+  --color-signal: #ffc845;
+
+  --font-display: 'Unbounded Variable', 'Unbounded Fallback', system-ui, sans-serif;
+  --font-sans: 'Figtree Variable', 'Figtree Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-flow: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Width-matched local fallbacks so text re-wraps as little as possible when web fonts arrive. */
+@font-face {
+  font-family: 'Unbounded Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('Roboto');
+  size-adjust: 121%;
+  ascent-override: 82%;
+}
+@font-face {
+  font-family: 'Figtree Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('Roboto');
+  size-adjust: 97%;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 104px;
+    background: var(--color-ink);
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-graphite);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.62;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    hyphens: manual;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-flow);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-flow-deep);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .on-dark :focus-visible,
+  .on-dark:focus-visible {
+    outline-color: var(--color-flow-lite);
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  .grid > * {
+    min-width: 0;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 640px) {
+    .container-x {
+      padding-inline: 28px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-x {
+      padding-inline: 44px;
+    }
+  }
+
+  /* Drawing-sheet label: mono, tracked, uppercase. */
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .num {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .display-xl {
+    font-size: clamp(2.05rem, 1.2rem + 3.7vw, 4.6rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .display-l {
+    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+  }
+  .display-m {
+    font-size: clamp(1.4rem, 1.1rem + 1.35vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .display-s {
+    font-size: clamp(1.12rem, 1rem + 0.5vw, 1.42rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .lead {
+    font-size: clamp(1.08rem, 1rem + 0.35vw, 1.28rem);
+    line-height: 1.58;
+  }
+
+  /* Buttons ------------------------------------------------------------------------- */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 54px;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 650;
+    font-size: 1rem;
+    line-height: 1.1;
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.3s ease,
+      transform 0.25s var(--ease-out-quint);
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn svg {
+    flex: none;
+  }
+  /* Cyan "flow" button: ink text on the logo cyan (≈ 8:1 contrast). */
+  .btn-primary {
+    background: var(--color-flow);
+    color: var(--color-ink);
+  }
+  .btn-primary:hover {
+    background: var(--color-flow-lite);
+    box-shadow: 0 10px 28px -10px color-mix(in srgb, var(--color-flow) 70%, transparent);
+  }
+  /* A pulse of light runs through the button like water through a pipe. */
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    bottom: 9px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent 0 30%, rgba(6, 16, 24, 0.55) 45% 55%, transparent 70%) no-repeat;
+    background-size: 220% 100%;
+    background-position: 140% 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover::after {
+    opacity: 1;
+    animation: btn-flow 0.9s var(--ease-flow) forwards;
+  }
+  @keyframes btn-flow {
+    to {
+      background-position: -40% 0;
+    }
+  }
+  .btn-outline {
+    border: 1.5px solid currentColor;
+    color: inherit;
+  }
+  .btn-outline:hover {
+    background: var(--color-graphite);
+    border-color: var(--color-graphite);
+    color: var(--color-paper);
+  }
+  .on-dark .btn-outline {
+    border-color: color-mix(in srgb, #fff 40%, transparent);
+  }
+  .on-dark .btn-outline:hover {
+    background: var(--color-paper);
+    border-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+  .btn-ink {
+    background: var(--color-ink);
+    color: #fff;
+  }
+  .btn-ink:hover {
+    background: var(--color-ink-4);
+  }
+
+  .link-u {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    transition: text-decoration-color 0.2s;
+  }
+  .link-u:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Arrow link: the arrow travels along a short pipe on hover. */
+  .go {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-weight: 650;
+  }
+  .go .go-line {
+    position: relative;
+    display: inline-block;
+    width: 26px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: width 0.35s var(--ease-out-quint);
+  }
+  .go .go-line::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .go:hover .go-line,
+  a:hover > .go .go-line {
+    width: 40px;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-radius: 999px;
+    padding: 0.36rem 0.8rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  /* Blueprint grid for dark drafting surfaces (decorative). */
+  .blueprint {
+    background-image:
+      linear-gradient(to right, rgb(111 211 251 / 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(111 211 251 / 0.055) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .blueprint-fine {
+    background-image:
+      linear-gradient(to right, rgb(11 26 36 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(11 26 36 / 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Valve symbol (⋈) used as list marker and divider node. */
+  .valve {
+    display: inline-block;
+    width: 14px;
+    height: 10px;
+    flex: none;
+    background: currentColor;
+    clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 50% 50%, 0 100%);
+  }
+  .valve-list > li {
+    position: relative;
+    padding-left: 1.6rem;
+  }
+  .valve-list > li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 13px;
+    height: 9px;
+    background: var(--marker, var(--color-flow-deep));
+    clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 50% 50%, 0 100%);
+  }
+  .on-dark .valve-list > li::before {
+    background: var(--marker, var(--color-flow));
+  }
+
+  /* Pipe divider: a line with a valve in the middle. */
+  .pipe-rule {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: currentColor;
+  }
+  .pipe-rule::before,
+  .pipe-rule::after {
+    content: '';
+    height: 2px;
+    flex: 1;
+    border-radius: 2px;
+    background: currentColor;
+    opacity: 0.2;
+  }
+
+  /* Form controls ----------------------------------------------------------------------- */
+  .field {
+    width: 100%;
+    min-height: 54px;
+    border-radius: 14px;
+    border: 1.5px solid #bccad4;
+    background: #fff;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    color: var(--color-graphite);
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+  .field::placeholder {
+    color: #6c7d8b;
+  }
+  .field:hover {
+    border-color: #8ea1af;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-flow-deep);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-flow) 25%, transparent);
+  }
+  .field[aria-invalid='true'] {
+    border-color: #c02a2a;
+  }
+  textarea.field {
+    min-height: 132px;
+    resize: vertical;
+  }
+  select.field {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%230b1a24' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.6rem;
+  }
+
+  /* Selectable chips (radio / checkbox) */
+  .pick {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 48px;
+    padding: 0.6rem 1rem;
+    border-radius: 14px;
+    border: 1.5px solid #bccad4;
+    background: #fff;
+    font-weight: 600;
+    font-size: 0.97rem;
+    line-height: 1.25;
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      background-color 0.2s,
+      color 0.2s;
+  }
+  .pick:hover {
+    border-color: #8ea1af;
+  }
+  .pick:has(input:checked) {
+    border-color: var(--color-flow-deep);
+    background: var(--color-flow-wash);
+    color: var(--color-graphite);
+  }
+  .pick:has(input:focus-visible) {
+    outline: 3px solid var(--color-flow-deep);
+    outline-offset: 2px;
+  }
+  .pick input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .pick .tick {
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    flex: none;
+    border-radius: 6px;
+    border: 1.5px solid #8ea1af;
+    background: #fff;
+    transition:
+      background-color 0.2s,
+      border-color 0.2s;
+  }
+  .pick.is-radio .tick {
+    border-radius: 999px;
+  }
+  .pick:has(input:checked) .tick {
+    background: var(--color-flow-deep);
+    border-color: var(--color-flow-deep);
+    color: #fff;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------
+ * Progressive reveals (only when JS runs; content is visible without JS).
+ * ------------------------------------------------------------------------------------- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.75s var(--ease-out-quint),
+    transform 0.75s var(--ease-out-quint);
+  transition-delay: calc(var(--d, 0) * 1ms);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+/* Photos open like a pipe filling: a vertical wipe from the bottom. */
+.js [data-wipe] {
+  clip-path: inset(100% 0 0 0 round 22px);
+  transition: clip-path 1.05s var(--ease-flow);
+  transition-delay: calc(var(--d, 0) * 1ms);
+}
+.js [data-wipe].is-in {
+  clip-path: inset(0 0 0 0 round 22px);
+}
+
+/* ---------------------------------------------------------------------------------------
+ * Signature hero – "Painekoe" (pressure test). The WP mark is drawn as one pipe run with a
+ * bright flow front, the P closes its loop, the white indicator in the P lights up and a
+ * single flow pulse runs through. Paths use pathLength="1"; GSAP animates the dash offsets.
+ * Pre-paint (.intro-pending) holds the mark undrawn; without JS or with reduced motion
+ * it renders complete.
+ * ------------------------------------------------------------------------------------- */
+.mark-line {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 0;
+}
+.intro-pending .hero-mark .mark-line {
+  stroke-dashoffset: 1;
+}
+.intro-pending .hero-mark .mark-pill,
+.intro-pending .hero-mark .mark-glow,
+.intro-pending .hero-mark .mark-note {
+  opacity: 0;
+}
+.mark-front,
+.mark-pulse {
+  stroke-dasharray: 0.06 1.2;
+  stroke-dashoffset: 0.06;
+  opacity: 0;
+}
+
+/* Pipeline (services): the riser fills as the visitor scrolls; valves open on arrival. */
+.riser-fill {
+  transform-origin: top;
+  transform: scaleY(var(--fill, 0));
+}
+.no-motion .riser-fill,
+.no-js-riser .riser-fill {
+  transform: none;
+}
+.riser-valve {
+  transition:
+    transform 0.6s var(--ease-out-quint),
+    background-color 0.4s,
+    color 0.4s,
+    box-shadow 0.4s;
+}
+.riser-valve .valve-gate {
+  transition: transform 0.6s var(--ease-out-quint);
+}
+[data-open='true'] .riser-valve {
+  background: var(--color-flow);
+  color: var(--color-ink);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-flow) 22%, transparent);
+}
+[data-open='true'] .riser-valve .valve-gate {
+  transform: rotate(90deg);
+}
+
+/* Reduced motion: everything in its final state, no transitions. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.no-motion [data-reveal],
+.no-motion [data-wipe] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+.no-motion .hero-mark .mark-line {
+  stroke-dashoffset: 0 !important;
+}
+.no-motion .hero-mark .mark-pill,
+.no-motion .hero-mark .mark-glow,
+.no-motion .hero-mark .mark-note {
+  opacity: 1 !important;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+dialog::backdrop {
+  background: rgba(4, 10, 15, 0.9);
+}

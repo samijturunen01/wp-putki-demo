@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- Hades Design concept demo: keep out of search engines until the customer approves production. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#061018" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%BASE_URL%favicon-32.png" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <title>LVI-urakointi ja -huolto Joensuussa | WP-Putki Oy</title>
+    <meta
+      name="description"
+      content="Lämpö-, vesi- ja ilmanvaihtotyöt sekä asbesti- ja haitta-ainekartoitukset ja purut taloyhtiöille, yrityksille ja kotitalouksille Joensuussa vuodesta 1989."
+    />
+    <script>
+      // Runs before first paint: enables progressive reveals and holds the homepage logo in its
+      // undrawn pre-intro state (never with reduced motion). No storage or cookies are used.
+      ;(function () {
+        try {
+          var d = document.documentElement
+          d.classList.add('js')
+          var base = '%BASE_URL%'
+          var p = location.pathname
+          var home = p === base || p + '/' === base || p === base + 'index.html'
+          var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          if (rm) d.classList.add('no-motion')
+          else if (home) d.classList.add('intro-pending')
+          // Failsafe: if the app never boots, show all content in its final state.
+          setTimeout(function () {
+            if (!window.__wpReady) {
+              d.classList.add('no-motion')
+              d.classList.remove('intro-pending')
+              d.classList.remove('js')
+            }
+          }, 4000)
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

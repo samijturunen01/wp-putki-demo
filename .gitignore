@@ -1,0 +1,16 @@
+node_modules
+dist
+test-results
+playwright-report
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Raw research downloads (not for publication)
+source-assets/raw/
+
+# Original downloads – re-download with docs/ASSET_PROVENANCE.md; optimised copies live in public/images
+source-assets/original/
+source-assets/stock/
