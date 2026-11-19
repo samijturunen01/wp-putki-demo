@@ -50,7 +50,7 @@ export function Contact() {
       />
 
       {/* Form + side info */}
-      <section id="tarjouspyynto" className="scroll-mt-24 bg-paper py-14 sm:py-20 lg:py-24" aria-labelledby="lomake-title">
+      <section id="tarjouspyynto" className="bg-paper py-14 sm:py-20 lg:py-24" aria-labelledby="lomake-title">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-7">
             <p className="tag flex items-center gap-3 text-flow-deep">
@@ -113,7 +113,7 @@ export function Contact() {
       </section>
 
       {/* Map */}
-      <section id="kartta" className="scroll-mt-24 bg-paper py-16 sm:py-20 lg:py-24" aria-labelledby="kartta-title">
+      <section id="kartta" className="bg-paper py-16 sm:py-20 lg:py-24" aria-labelledby="kartta-title">
         <div className="container-x">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <SectionHead id="kartta-title" tag="Käyntiosoite" title={`${company.address.street}, ${company.address.city}`} intro={`${company.legalName} · ${company.address.postalCode} ${company.address.city} · ${company.address.district}`} />
@@ -125,10 +125,10 @@ export function Contact() {
       </section>
 
       {/* Invoicing */}
-      <section id="laskutus" className="scroll-mt-24 on-dark bg-ink py-16 text-white sm:py-20 lg:py-24" aria-labelledby="laskutus-title">
+      <section id="laskutus" className="on-dark bg-ink py-16 text-white sm:py-20 lg:py-24" aria-labelledby="laskutus-title">
         <div className="container-x grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
           <div>
-            <SectionHead dark id="laskutus-title" tag="Laskutus" title="Laskutustiedot." intro={`Y-tunnus ${company.businessId}`} />
+            <SectionHead dark id="laskutus-title" tag="Laskutus" title="Laskutus­tiedot." intro={`Y-tunnus ${company.businessId}`} />
           </div>
           <div className="grid gap-px overflow-hidden rounded-[22px] bg-white/12 sm:grid-cols-3" data-reveal>
             <div className="bg-ink-2 p-6">

@@ -3,12 +3,12 @@ import { Phone, MapPin, Clock } from 'lucide-react'
 import { Logo } from '../brand/Logo'
 import { company } from '../../data/company'
 import { services } from '../../data/services'
-import { nav, quoteHref } from '../../data/nav'
+import { nav } from '../../data/nav'
 import { track } from '../../lib/analytics'
 
 export function Footer() {
   return (
-    <footer className="on-dark relative overflow-hidden bg-ink pb-28 text-fog lg:pb-10">
+    <footer className="on-dark relative overflow-hidden border-t border-white/10 bg-[#040b11] pb-28 text-fog lg:pb-10">
       {/* Sign-off: the slogan on a pipe run */}
       <div className="container-x pt-16 lg:pt-24">
         <div className="flex flex-col gap-8 border-b border-white/10 pb-12 lg:flex-row lg:items-end lg:justify-between">
@@ -17,18 +17,13 @@ export function Footer() {
             <br />
             <span className="text-flow">linjassaan.</span>
           </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              to={quoteHref()}
-              onClick={() => track('cta_click', { location: 'footer', label: 'pyyda_tarjous' })}
-              className="btn btn-primary"
-            >
-              Pyydä tarjous
-            </Link>
-            <a href={company.phone.href} onClick={() => track('phone_click', { location: 'footer' })} className="btn btn-outline text-white">
-              <Phone size={18} aria-hidden="true" /> {company.phone.display}
+          <p className="max-w-[22rem] text-[0.95rem] text-fog lg:text-right">
+            Joensuulainen LVI-liike vuodesta {company.foundedYear}. Työtilaukset arkisin 7.00–15.30,{' '}
+            <a href={company.phone.href} onClick={() => track('phone_click', { location: 'footer_signoff' })} className="link-u num font-[650] text-white">
+              {company.phone.display}
             </a>
-          </div>
+            .
+          </p>
         </div>
 
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">

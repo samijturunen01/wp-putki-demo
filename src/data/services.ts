@@ -39,7 +39,7 @@ export const services: Service[] = [
     code: '01',
     label: 'Lämpö',
     tone: 'heat',
-    title: 'Lämmitys linjassa: lämmönjakokeskukset, lämpöjohdot ja lämpöpumput',
+    title: 'Lämmitys linjassa: lämmön­jako­keskukset, lämpö­johdot ja lämpö­pumput',
     short: 'Lämmönjakokeskusten, lämpöjohtojen ja kattiloiden uusinnat, lämpöpumput ja lämmityslaitteiden huollot.',
     intro:
       'Uusimme lämmönjakokeskukset, lämpöjohdot ja lämpökattilat, toteutamme maalämpö-, ilma- ja vesilämpöpumppujärjestelmiä ja huollamme lämmityslaitteita – kerrostaloissa, toimitiloissa ja omakotitaloissa.',
@@ -90,7 +90,7 @@ export const services: Service[] = [
     code: '02',
     label: 'Vesi',
     tone: 'flow',
-    title: 'Linjasaneeraukset ja vesijohtotyöt ammattitaidolla',
+    title: 'Linja­saneeraukset ja vesijohto­työt ammatti­taidolla',
     short: 'Linja- ja vesijohtosaneeraukset, putkistojen korjaus- ja huoltotyöt sekä WC-istuinten ja hanojen uusinnat.',
     intro:
       'Taloyhtiön linjasaneerauksesta yksittäiseen hanaan: teemme linja- ja vesijohtosaneeraukset, putkistojen korjaus- ja huoltotyöt sekä WC-istuinten ja hanojen uusinnat.',
@@ -139,7 +139,7 @@ export const services: Service[] = [
     code: '03',
     label: 'Ilma',
     tone: 'air',
-    title: 'Ilmanvaihdon asennukset, huollot, mittaukset ja säädöt',
+    title: 'Ilman­vaihdon asennukset, huollot, mittaukset ja säädöt',
     short: 'IV-laitteiden ja -putkistojen asennukset, suodatinvaihdot, kanavanuohoukset, mittaukset ja säädöt.',
     intro:
       'Myymme, asennamme ja huollamme ilmanvaihtolaitteita ja IV-tarvikkeita. Meiltä löytyy laaja valikoima ilmanvaihtolaitteiden suodattimia ja muita tarvittavia varusteita.',
@@ -190,7 +190,7 @@ export const services: Service[] = [
     code: '04',
     label: 'Asbesti',
     tone: 'signal',
-    title: 'Asbesti- ja haitta-ainekartoitukset sekä purkutyöt',
+    title: 'Asbesti- ja haitta-aine­kartoitukset sekä purku­työt',
     short: 'Asbesti- ja haitta-ainekartoitukset ennen remonttia sekä asbesti- ja haitta-aineiden purkutyöt.',
     intro:
       'Kartoitamme asbestin ja muut haitta-aineet ennen remonttia ja teemme niiden purkutyöt. Samalta yritykseltä saat myös remontin LVI-työt.',

@@ -5,6 +5,9 @@ import { defineConfig, devices } from '@playwright/test'
  * (run `npm run build` first). Base path: /wp-putki-demo/.
  * LIVE_URL=https://samijturunen01.github.io runs the suite against the deployed demo.
  */
+// Locally the installed Chrome is used (bundled Playwright browsers may be outdated); CI installs Chromium.
+const channel = process.env.CI ? undefined : 'chrome'
+
 export default defineConfig({
   testDir: 'tests',
   timeout: 45_000,
@@ -23,7 +26,7 @@ export default defineConfig({
         reuseExistingServer: !process.env.CI,
       },
   projects: [
-    { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } } },
-    { name: 'mobile', use: { ...devices['Pixel 7'] } },
+    { name: 'desktop', use: { ...devices['Desktop Chrome'], channel, viewport: { width: 1440, height: 900 } } },
+    { name: 'mobile', use: { ...devices['Pixel 7'], channel } },
   ],
 })

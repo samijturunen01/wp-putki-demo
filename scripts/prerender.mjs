@@ -101,7 +101,7 @@ try {
       ? {
           '@context': 'https://schema.org',
           '@type': 'Service',
-          name: service.title,
+          name: service.title.replace(/­/g, ''),
           serviceType: service.label,
           description: service.seo.description,
           url,
